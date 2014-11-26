@@ -1,0 +1,34 @@
+%div.panel{:class => state == 'private' ? 'panel-warning' : 'panel-default'}
+  %div.panel-heading
+    %div.pull-right
+      %span.glyphicon{:class => state == 'private' ? 'glyphicon-lock' : 'glyphicon-globe'}
+    %h4
+      Recording -
+      = name
+  %div.clearfix
+  %div.panel-body
+    #player
+      .header= name
+      #term
+      .progress
+        .progress-bar.progress-info.progress-striped.bar
+      %nav.controls
+        %li.sc-button.action-toggle{'data-action' => 'play'}
+          %span.glyphicon.glyphicon-play
+        %li.speed-container
+          %input.speed{type: 'text', value: '2.5'}
+      %input.cmdline{:hidden => 'hidden'}
+  %div.panel-footer
+    %div.pull-right
+      Uploaded by:
+      %a{:href => "/users/#{user}"}= user
+    %div.clearfix
+
+:javascript
+  jQuery(function(){
+    window.term = new Terminal(80, 24);
+    window.term.id = 1;
+    term.open(document.getElementById('term'));
+    window.player = new VT.Player(term);
+    window.player.load('#{url}');
+  });

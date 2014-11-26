@@ -1,0 +1,33 @@
+!!! 1.1
+%html
+  %head
+    %title= "Yetty - [#{@title || '-'}]"
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/styles.css'}
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/player.css'}
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/fd-slider.css'}
+    %script{:type => 'text/javascript', :src => '/js/jquery-2.1.1.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/bootstrap.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/fd-slider.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/term.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/player.js'}
+
+  %body
+    %div.container.document
+      %nav.navbar.navbar-default{:role => 'navigation'}
+        %div.container-fluid
+          %div.navbar-header
+            %a.navbar-brand{:href => '/'}
+              Yetty
+      %br
+      %div.col-md-9= yield
+      %div.col-md-3
+        %ul.nav.navbar-default
+          %li
+            %a{:href => '/recordings'}
+              Recordings
+          %li
+            %a{:href => '/users'}
+              Users
+          %li
+            %a{:href => '/about'}
+              About

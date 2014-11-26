@@ -1,0 +1,139 @@
+@import "compass/css3";
+@import "compass/utilities";
+
+#term {
+  font-family: "DejaVu Sans Mono", monospace;
+  font-size: 11px;
+  color: #f0f0f0;
+  background: #000;
+  margin: 0 auto;
+  margin: 10 auto;
+  .reverse-video {
+    color: #000;
+    background: #f0f0f0;
+  }
+}
+
+
+.embed {
+  #player {
+    margin-top: 5px;
+  }
+}
+
+#player {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  .header {
+    @include border-top-left-radius(5px);
+    @include border-top-right-radius(5px);
+    background: url(/assets/term/bg-gradient.png);
+    height: 32px;
+    line-height: 32px;
+    color: white;
+    img {
+      margin: 6px 10px 0 10px;
+      float: left;
+    }
+    h1 {
+      display: block;
+      font-size: 14px;
+      color: white;
+      line-height: 30px;
+    }
+  }
+  .cmdline {
+    border: 0;
+    border-top: 1px solid #444;
+    font-size: 1.4em;
+    padding: 3px;
+    background: #111;
+    color: #aaa;
+    border: 0;
+  }
+  input[type=range] {
+    margin-bottom: -10px;
+  }
+  .progress {
+    @include border-radius(0);
+    background-color: #333;
+    background-image: none;
+    height: 10px;
+    margin-bottom: 0;
+    .bar {
+      width: 0%;
+    }
+  }
+  .speed-container {
+    width: 100px;
+  }
+  .fd-slider {
+    height: 20px;
+    margin-top: 5px;
+  }
+  nav.controls {
+    height: 30px;
+    border-top: 1px solid #444;
+    background: black;
+    li {
+      display: block;
+      margin: 0;
+      float: left;
+      height: 30px;
+    }
+    .sc-label {
+      color: gray;
+      line-height: 30px;
+      margin-left: 30px;
+      margin-right: 10px;
+      margin-top: -2px;
+    }
+    .sc-button {
+      cursor: pointer;
+      line-height: 30px;
+      width: 30px;
+      img {
+        margin: 4px;
+        vertical-align: baseline;
+      }
+    }
+    .sc-settings {
+      display: none;
+    }
+  }
+}
+
+#player-hover {
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  p {
+    padding: 20px;
+    .donate {
+      font-size: 0.5em;
+      color: gray;
+    }
+  }
+  &.enabled {
+    -webkit-transition-property: background;
+    -webkit-transition-duration: 5s;
+    -webkit-transition-timing-function: default;
+    background-color: rgba(0,0,0,0.7);
+    &.error {
+      a {
+        color: #aaa;
+      }
+      .img {
+        width: 126px;
+        height: 126px;
+        background: #eee;
+        padding: 10px;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+    }
+  }
+  &.disabled {
+    background: rgba(0,0,0,0)
+  }
+}

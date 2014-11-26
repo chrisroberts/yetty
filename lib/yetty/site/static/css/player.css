@@ -1,0 +1,165 @@
+/* line 4, ../sass/player.scss */
+#term {
+  font-family: "DejaVu Sans Mono", monospace;
+  font-size: 11px;
+  color: #f0f0f0;
+  background: #000;
+  margin: 0 auto;
+  margin: 10 auto;
+}
+/* line 11, ../sass/player.scss */
+#term .reverse-video {
+  color: #000;
+  background: #f0f0f0;
+}
+
+/* line 19, ../sass/player.scss */
+.embed #player {
+  margin-top: 5px;
+}
+
+/* line 24, ../sass/player.scss */
+#player {
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+/* line 27, ../sass/player.scss */
+#player .header {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background: url(/assets/term/bg-gradient.png);
+  height: 32px;
+  line-height: 32px;
+  color: white;
+}
+/* line 34, ../sass/player.scss */
+#player .header img {
+  margin: 6px 10px 0 10px;
+  float: left;
+}
+/* line 38, ../sass/player.scss */
+#player .header h1 {
+  display: block;
+  font-size: 14px;
+  color: white;
+  line-height: 30px;
+}
+/* line 45, ../sass/player.scss */
+#player .cmdline {
+  border: 0;
+  border-top: 1px solid #444;
+  font-size: 1.4em;
+  padding: 3px;
+  background: #111;
+  color: #aaa;
+  border: 0;
+}
+/* line 54, ../sass/player.scss */
+#player input[type=range] {
+  margin-bottom: -10px;
+}
+/* line 57, ../sass/player.scss */
+#player .progress {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  background-color: #333;
+  background-image: none;
+  height: 10px;
+  margin-bottom: 0;
+}
+/* line 63, ../sass/player.scss */
+#player .progress .bar {
+  width: 0%;
+}
+/* line 67, ../sass/player.scss */
+#player .speed-container {
+  width: 100px;
+}
+/* line 70, ../sass/player.scss */
+#player .fd-slider {
+  height: 20px;
+  margin-top: 5px;
+}
+/* line 74, ../sass/player.scss */
+#player nav.controls {
+  height: 30px;
+  border-top: 1px solid #444;
+  background: black;
+}
+/* line 78, ../sass/player.scss */
+#player nav.controls li {
+  display: block;
+  margin: 0;
+  float: left;
+  height: 30px;
+}
+/* line 84, ../sass/player.scss */
+#player nav.controls .sc-label {
+  color: gray;
+  line-height: 30px;
+  margin-left: 30px;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+/* line 91, ../sass/player.scss */
+#player nav.controls .sc-button {
+  cursor: pointer;
+  line-height: 30px;
+  width: 30px;
+}
+/* line 95, ../sass/player.scss */
+#player nav.controls .sc-button img {
+  margin: 4px;
+  vertical-align: baseline;
+}
+/* line 100, ../sass/player.scss */
+#player nav.controls .sc-settings {
+  display: none;
+}
+
+/* line 106, ../sass/player.scss */
+#player-hover {
+  text-align: center;
+  color: white;
+  font-size: 2em;
+}
+/* line 110, ../sass/player.scss */
+#player-hover p {
+  padding: 20px;
+}
+/* line 112, ../sass/player.scss */
+#player-hover p .donate {
+  font-size: 0.5em;
+  color: gray;
+}
+/* line 117, ../sass/player.scss */
+#player-hover.enabled {
+  -webkit-transition-property: background;
+  -webkit-transition-duration: 5s;
+  -webkit-transition-timing-function: default;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+/* line 123, ../sass/player.scss */
+#player-hover.enabled.error a {
+  color: #aaa;
+}
+/* line 126, ../sass/player.scss */
+#player-hover.enabled.error .img {
+  width: 126px;
+  height: 126px;
+  background: #eee;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+/* line 136, ../sass/player.scss */
+#player-hover.disabled {
+  background: rgba(0, 0, 0, 0);
+}
