@@ -5,53 +5,48 @@ require 'yetty'
 
 begin
   Slop.parse :help => true do
-
     on :v, :version, 'Print version' do
       puts "yetty - TTY utility - [Version: #{Yetty::VERSION}]"
     end
 
     command 'site' do
-
       description 'Run yetty site'
-
       on :c, :config=, 'JSON configuration file'
-
       on :b, :bind=, 'IP to bind', :as => String, :default => '0.0.0.0'
       on :p, :port=, 'Listen port', :as => Integer, :default => 9988
-
       run do |opts, args|
         Yetty::Site.new({:site => opts.to_hash}, args).execute!
       end
-
     end
 
     command 'push' do
-
       description 'Push JSON recording'
-
-      on :c, :config, 'JSON configuration file'
+      on :c, :config=, 'JSON configuration file'
       on :p, :private, 'Not publicly listed'
       on :o, :overwrite, 'Overwrite if already exists'
-
       run do |opts, args|
         Yetty::Push.new({:push => opts.to_hash}, args).execute!
       end
+    end
 
+    command 'record' do
+      description 'Record terminal'
+      on :s, :sound, 'Record sound'
+      run do |opts, args|
+        Yetty::Record.new({:record => opts.to_hash}, args).execute!
+      end
     end
 
     command 'user' do
-
       description 'View/set user information'
-
-      on :c, :config, 'JSON configuration file'
-
+      on :c, :config=, 'JSON configuration file'
       run do |opts, args|
         Yetty::UserInfo.new({:user => opts.to_hash}, args).execute!
       end
-
     end
 
   end
+
 rescue => e
   if(ENV['DEBUG'])
     $stderr.puts "#{e.class}: #{e}\n#{e.backtrace.join("\n")}"

@@ -6,6 +6,18 @@ module Yetty
 
     # Push shelr json to storage
     def execute!
+      run_action('Updating user list') do
+        file = bucket.files.get('userlist.json')
+        content = file ? file.body : Smash.new(:users => [])
+        unless(content[:users].include?(user[:username]))
+          content[:users].push(user[:username]).uniq!
+          file = bucket.files.build
+          file.name = 'userlist.json'
+          file.content_type = 'application/json'
+          file.body = MultiJson.dump(content)
+          file.save
+        end
+      end
       filename = arguments.first
       run_action("Pushing file #{filename}") do
         key_name = File.basename(filename).sub(/\.[^\.]+$/, '')

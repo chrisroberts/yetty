@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'sinatra'
   s.add_dependency 'haml'
   s.add_dependency 'slop'
-  s.add_dependency 'cowsay'
   s.add_dependency 'paint'
+  s.add_dependency 'shelr'
   s.executables << 'yetty'
   s.files = Dir['{lib,bin,site}/**/**/*'] + %w(yetty.gemspec README.md CHANGELOG.md LICENSE)
 end

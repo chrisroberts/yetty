@@ -1,0 +1,28 @@
+.panel.panel-default
+  .panel-heading
+    %h4
+      User information:
+      = username
+  .panel-body
+    - unless user_info.empty?
+      %table.table
+        %caption
+          User information
+        %tbody
+        - user_info.each do |k,v|
+          %tr
+            %td
+              %b= k
+            %td= v
+    %table.table.table-striped
+      %thead
+        %tr
+          %td{:colspan => 2}
+            %b
+              Recordings
+      %tbody.table-striped
+        - records.each do |rec|
+          %tr
+            %td= Time.at(File.basename(rec.name).split('-').first.to_i)
+            %td
+              %a{:href => "/recording/#{Base64.urlsafe_encode64(rec.name)}"}= rec.name

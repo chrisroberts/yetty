@@ -1,0 +1,16 @@
+.panel.panel-default
+  .panel-heading
+    %h4
+      User List
+  .panel-body
+    %table.table.table-striped
+      %thead
+        %tr
+          %td
+            %b
+              Users
+      %tbody.table-striped
+        - users.sort.each do |usr|
+          %tr
+            %td
+              %a{:href => "/users/#{usr}"}= usr
