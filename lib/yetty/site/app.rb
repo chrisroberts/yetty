@@ -1,4 +1,3 @@
-require 'cowsay'
 require 'base64'
 require 'sinatra/base'
 
