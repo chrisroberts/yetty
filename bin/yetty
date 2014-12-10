@@ -37,11 +37,17 @@ begin
       end
     end
 
-    command 'user' do
-      description 'View/set user information'
-      on :c, :config=, 'JSON configuration file'
+    command 'play' do
+      description 'Play terminal'
       run do |opts, args|
-        Yetty::UserInfo.new({:user => opts.to_hash}, args).execute!
+        Yetty::Play.new({:play => opts}, args).execute!
+      end
+    end
+
+    command 'user' do
+      description 'Set user information'
+      run do |opts, args|
+        Yetty::User.new({:user => opts.to_hash}, args).execute!
       end
     end
 
