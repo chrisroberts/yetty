@@ -8,7 +8,7 @@ module Yetty
     def execute!
       run_action('Updating user list') do
         file = bucket.files.get('userlist.json')
-        content = file ? file.body : Smash.new(:users => [])
+        content = file ? MultiJson.load(file.body.readpartial).to_smash : Smash.new(:users => [])
         unless(content[:users].include?(user[:username]))
           content[:users].push(user[:username]).uniq!
           file = bucket.files.build
@@ -23,7 +23,7 @@ module Yetty
         key_name = File.basename(filename).sub(/\.[^\.]+$/, '')
         file_content = File.read(filename)
         data = MultiJson.load(file_content).to_smash
-        state = data[:private] ? 'private' : 'public'
+        state = data[:private] || options[:push][:private] ? 'private' : 'public'
         key_name = File.join(user[:username], state, "#{Time.now.to_i}-#{key_name}.json")
         file = bucket.files.build
         file.name = key_name
