@@ -46,13 +46,17 @@ module Yetty
 
     # User specific options
     #
-    # @return [Hash]
+    # @return [Smash]
     def user
       result = options[:user]
       unless(result)
         raise 'No user information defined!'
       else
-        result.to_smash
+        result = result.to_smash
+        unless(result[:username])
+          result[:username] = ENV['USER']
+        end
+        result
       end
     end
 
