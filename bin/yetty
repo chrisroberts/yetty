@@ -23,7 +23,6 @@ begin
       description 'Push JSON recording'
       on :c, :config=, 'JSON configuration file'
       on :p, :private, 'Not publicly listed'
-      on :o, :overwrite, 'Overwrite if already exists'
       run do |opts, args|
         Yetty::Push.new({:push => opts.to_hash}, args).execute!
       end
