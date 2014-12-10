@@ -74,5 +74,30 @@ module Yetty
       Paint[string, *args]
     end
 
+    # Prompt for question and receive answer
+    #
+    # @param question [String]
+    # @param default [String]
+    # @return [String]
+    def ask(question, default=nil)
+      string = question.dup
+      if(default)
+        string << " [#{default}]"
+      end
+      result = nil
+      until(result)
+        info "#{string}: ", :nonewline
+        result = $stdin.gets.strip
+        if(result.empty? && default)
+          result = default
+        end
+        if(result.empty?)
+          error 'Please provide a value'
+          result = nil
+        end
+      end
+      result
+    end
+
   end
 end
