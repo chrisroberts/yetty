@@ -47,7 +47,7 @@ module Yetty
 
       get '/users' do
         file = bucket.files.get('userlist.json')
-        users = file ? file.body[:users] : []
+        users = file ? MultiJson.load(file.body.readpartial).to_smash[:users] : []
         haml(
           :users,
           :locals => {
