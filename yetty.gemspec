@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'paint'
   s.add_dependency 'shelr'
   s.executables << 'yetty'
-  s.files = Dir['{lib,bin,site}/**/**/*'] + %w(yetty.gemspec README.md CHANGELOG.md LICENSE)
+  s.files = Dir['{lib,bin}/**/**/*'] + %w(yetty.gemspec README.md CHANGELOG.md LICENSE)
 end
