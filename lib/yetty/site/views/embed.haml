@@ -1,0 +1,20 @@
+#player
+  .header= name
+  #term
+  .progress
+    .progress-bar.progress-info.progress-striped.bar
+  %nav.controls
+    %li.sc-button.action-toggle{'data-action' => 'play'}
+      %span.glyphicon.glyphicon-play
+    %li.speed-container
+      %input.speed{type: 'text', value: '2.5'}
+  %input.cmdline{:hidden => 'hidden'}
+
+:javascript
+  jQuery(function(){
+    window.term = new Terminal(80, 24);
+    window.term.id = 1;
+    term.open(document.getElementById('term'));
+    window.player = new VT.Player(term);
+    window.player.load('#{url}');
+  });

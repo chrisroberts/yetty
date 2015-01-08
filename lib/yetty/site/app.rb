@@ -6,18 +6,20 @@ module Yetty
     # Web UI
     class App < Sinatra::Base
 
+      set :protection, :except => :frame_options
+
       def bucket
         storage = Miasma.api(
           :type => :storage,
           :provider => :aws,
           :credentials => {
-            :aws_access_key_id => ENV['MIASMA_AWS_ACCESS_KEY_ID'],
-            :aws_secret_access_key => ENV['MIASMA_AWS_SECRET_ACCESS_KEY'],
-            :aws_region => ENV['MIASMA_AWS_REGION'],
-            :aws_bucket_region => 'us-west-2'
+            :aws_access_key_id => ENV['YETTY_AWS_ACCESS_KEY_ID'],
+            :aws_secret_access_key => ENV['YETTY_AWS_SECRET_ACCESS_KEY'],
+            :aws_region => ENV['YETTY_AWS_REGION'],
+            :aws_bucket_region => ENV['YETTY_AWS_REGION']
           }
         )
-        bucket = storage.buckets.get('cr-test-00')
+        bucket = storage.buckets.get(ENV['YETTY_BUCKET'])
       end
 
       set :public_folder, File.join(File.dirname(__FILE__), 'static')
@@ -36,6 +38,22 @@ module Yetty
         rec_url = bucket.files.get(rec_path).url
         haml(
           :recording,
+          :locals => {
+            :user => user,
+            :state => state,
+            :name => name,
+            :url => rec_url
+          }
+        )
+      end
+
+      get '/embed/:info' do
+        rec_path = Base64.urlsafe_decode64(params[:info])
+        user, state, name = rec_path.split('/')
+        rec_url = bucket.files.get(rec_path).url
+        haml(
+          :embed,
+          :layout => :embed_layout,
           :locals => {
             :user => user,
             :state => state,

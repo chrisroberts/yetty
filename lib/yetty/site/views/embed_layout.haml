@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title= "Yetty - [#{@title || '-'}]"
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/styles.css'}
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/player.css'}
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => '/css/fd-slider.css'}
+    %script{:type => 'text/javascript', :src => '/js/jquery-2.1.1.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/bootstrap.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/fd-slider.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/term.js'}
+    %script{:type => 'text/javascript', :src => '/js/player/player.js'}
+  %body.embed{:style => 'background-image: none; background-color: white;'}
+    = yield
