@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'paint'
   s.add_dependency 'shelr'
   s.add_dependency 'compass'
-  s.add_dependency 'boostrap-sass'
+  s.add_dependency 'bootstrap-sass'
   s.executables << 'yetty'
   s.files = Dir['{lib,bin}/**/**/*'] + %w(yetty.gemspec README.md CHANGELOG.md LICENSE)
 end
