@@ -13,11 +13,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'miasma'
   s.add_dependency 'sinatra'
   s.add_dependency 'haml'
-  s.add_dependency 'slop'
+  s.add_dependency 'slop', '~> 3.0'
   s.add_dependency 'paint'
   s.add_dependency 'shelr'
   s.add_dependency 'compass'
   s.add_dependency 'bootstrap-sass'
+  s.add_dependency 'bogo'
   s.executables << 'yetty'
   s.files = Dir['{lib,bin}/**/**/*'] + %w(yetty.gemspec README.md CHANGELOG.md LICENSE)
 end
