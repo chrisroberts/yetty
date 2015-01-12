@@ -1,4 +1,5 @@
 require 'base64'
+require 'bogo'
 require 'sinatra/base'
 
 module Yetty
@@ -6,20 +7,30 @@ module Yetty
     # Web UI
     class App < Sinatra::Base
 
+      include Bogo::Memoization
+
       set :protection, :except => :frame_options
+
+      def config
+        memoize(:config, :direct) do
+          path = ENV['YETTY_SITE_CONFIG']
+          unless(path)
+            path = Command::DEFAULT_CONFIGURATION_FILES.detect do |check|
+              full_check = File.expand_path(check)
+              File.exists?(full_check)
+            end
+          end
+          MultiJson.load(File.read(path)).to_smash
+        end
+      end
 
       def bucket
         storage = Miasma.api(
           :type => :storage,
-          :provider => :aws,
-          :credentials => {
-            :aws_access_key_id => ENV['YETTY_AWS_ACCESS_KEY_ID'],
-            :aws_secret_access_key => ENV['YETTY_AWS_SECRET_ACCESS_KEY'],
-            :aws_region => ENV['YETTY_AWS_REGION'],
-            :aws_bucket_region => ENV['YETTY_AWS_REGION']
-          }
+          :provider => config.get(:site, :storage, :provider),
+          :credentials => config.get(:site, :storage, :credentials)
         )
-        bucket = storage.buckets.get(ENV['YETTY_BUCKET'])
+        storage.buckets.get(config.get(:site, :storage, :bucket))
       end
 
       set :public_folder, File.join(File.dirname(__FILE__), 'static')
